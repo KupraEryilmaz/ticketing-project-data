@@ -12,6 +12,16 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 public class UserDTO {
 
+    private Long id; //Bu field i eklemedigimiz taktirde program "nesne kaydedilmemiş bir geçici örneğe başvuruyor - temizlemeden önce geçici örneği kaydedin" hatasini veriyor.Yani ProjectDTO formu icerisinde bulun UserDTO id ye sahip olmadigi icin program bu UserDTO nun database de kayitli oldugunu anlayamiyor.Bu problemi cozmek icin UserDTO class ina id field i ekliyoruz.Boylelikle programimiz bu id ye bakarak bu id ye ait database de objeye sahip olup olmadigimizi kontrol edecek.Sagip oldugumuzu gordugunde de hata vermeyecek.
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @NotBlank
     @Size(max = 15, min = 2)
     private String firstName;

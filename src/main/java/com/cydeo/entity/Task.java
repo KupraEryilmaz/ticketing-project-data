@@ -1,7 +1,5 @@
 package com.cydeo.entity;
 
-import com.cydeo.dto.ProjectDTO;
-import com.cydeo.dto.UserDTO;
 import com.cydeo.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +7,6 @@ import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -19,12 +15,12 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @Where(clause = "is_deleted=false")
-public class TaskEntity extends BaseEntity {
+public class Task extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Project project;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "assigned_employee_id")
     private User assignedEmployee;
     private String taskSubject;
     private String taskDetail;
